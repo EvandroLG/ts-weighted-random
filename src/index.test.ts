@@ -27,8 +27,8 @@ test("returns undefined when map is empty", () => {
 
 test("picks more often the values with higher weight", () => {
   const map = new Map([
-    [1, 10],
-    [2, 5],
+    [1, 20],
+    [2, 10],
     [3, 1],
   ]);
 
@@ -38,7 +38,7 @@ test("picks more often the values with higher weight", () => {
     3: 0,
   };
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 30; i++) {
     const idx = weightedRandom(map) as number;
     result[idx]++;
   }
