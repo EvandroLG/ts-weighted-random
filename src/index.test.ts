@@ -12,10 +12,10 @@ test("picks value at random", () => {
 });
 
 test("picks sole item when map is unity length", () => {
-  const map = new Map([[1, 1]]);
+  const map = new Map([[10, 1]]);
 
   const result = weightedRandom(map);
-  expect(result).toBe(1);
+  expect(result).toBe(10);
 });
 
 test("returns undefined when map is empty", () => {
@@ -23,4 +23,26 @@ test("returns undefined when map is empty", () => {
 
   const result = weightedRandom(map);
   expect(result).toBeUndefined();
+});
+
+test("picks more often the values with higher weight", () => {
+  const map = new Map([
+    [1, 10],
+    [2, 5],
+    [3, 1],
+  ]);
+
+  const result: { [key: number]: number } = {
+    1: 0,
+    2: 0,
+    3: 0,
+  };
+
+  for (let i = 0; i < 10; i++) {
+    const idx = weightedRandom(map) as number;
+    result[idx]++;
+  }
+
+  expect(result[1] > result[2]).toBeTruthy();
+  expect(result[2] > result[3]).toBeTruthy();
 });
