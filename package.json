@@ -1,5 +1,6 @@
 {
   "name": "ts-weighted-random",
+  "description": "Picks a random value from a list based on the weights",
   "version": "0.0.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
